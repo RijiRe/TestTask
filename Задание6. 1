@@ -1,3 +1,4 @@
+Задание 1
 class Animal {
     String name;
     public Animal(String name) {
@@ -30,5 +31,65 @@ public class Main {
     cat.info();
     Animal dog = new Dog("Дружок");
     dog.info();
+    }
+}
+
+Задание 3
+class Animal {    
+    String name;
+    int maxRunDistance;    
+    int maxSwimDistance;
+    public Animal(String name, int maxRunDistance, int maxSwimDistance) {        
+        this.name = name;
+        this.maxRunDistance = maxRunDistance;        
+        this.maxSwimDistance = maxSwimDistance;
+    }    
+    public void info() {
+        System.out.println("Животное: " + name);    
+    }
+    public void run(int distance) {        
+        if (distance <= maxRunDistance) {
+        System.out.println(name + " пробежал " + distance + " м.");        
+        } else {
+        System.out.println(name + " не может пробежать такое расстояние");        
+        }
+    }    
+    public void swim(int distance) {
+        if (maxSwimDistance == 0) {            
+            System.out.println(name + " не умеет плавать");
+        } else if (distance <= maxSwimDistance) {            
+            System.out.println(name + " проплыл " + distance + " м.");
+        } else {            
+            System.out.println(name + " не может проплыть такое расстояние");
+        }    
+    }
+}
+class Cat extends Animal {
+    public Cat(String name) {        
+        super(name, 200, 0);
+    }    @Override
+    public void info() {        
+        System.out.println("Имя котика: " + name);
+    }
+}
+class Dog extends Animal {    
+    public Dog(String name) {
+    super(name, 500, 10);    
+    }
+    @Override    
+    public void info() {
+        System.out.println("Имя пёселя: " + name);    
+    }
+}
+public class Main {
+    public static void main(String[] args) {        
+        Animal cat = new Cat("Барсик");
+        cat.info();        
+        cat.run(100);
+        cat.swim(0);        
+        Animal dog = new Dog("Дружок");
+        dog.info();        
+        dog.run(150);
+        dog.swim(5);    
     }
 }
